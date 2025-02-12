@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anime Recommendations</title>
+  <title>Series Recommendations</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
+    /* Add this CSS to your existing style */
+
     body {
       font-family: 'Press Start 2P', cursive;
       background-image: url('https://i.pinimg.com/736x/58/da/5e/58da5eaad92648867aec655b2572a6c7.jpg');
@@ -22,9 +23,16 @@
       text-align: center;
       position: relative;
     }
+
+    .hidden {
+      display: none;
+    }
+
     h1, h2, button, ul {
       font-family: 'Press Start 2P', cursive;
     }
+
+    /* Window Controls */
     .window-controls {
       position: absolute;
       top: 10px;
@@ -32,6 +40,7 @@
       display: flex;
       gap: 10px;
     }
+
     .window-controls button {
       background: rgba(255, 255, 255, 0.2);
       border: none;
@@ -40,12 +49,75 @@
       font-family: 'Press Start 2P', cursive;
       color: white;
     }
+
     .window-controls button:hover {
       background: rgba(255, 255, 255, 0.5);
+    }
+
+    button {
+      background-color: #b38bff; /* Light pastel purple */
+      color: white;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background-color: #9a6ad3;
+    }
+
+    /* Page Styling */
+    #start-page, #menu-page, #recommendations-page, #msa-page, #kdrama-page {
+      padding: 30px;
+      border-radius: 10px;
+      background-color: rgba(214, 197, 252, 0.73); /* Pastel Purple */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Page 2: Menu */
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-direction: column; /* Stack buttons vertically */
+      align-items: center;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    /* KDrama Recommendations Section */
+    #kdrama-page ul, #anime-page ul, #msa-page ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    #kdrama-page li, #anime-page li, #msa-page li {
+      margin-bottom: 10px;
+    }
+
+    /* Add fade-in and fade-out styles */
+    .fade {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .fade-in {
+      opacity: 1;
+    }
+
+    .fade-out {
+      opacity: 0;
     }
   </style>
 </head>
 <body>
+
   <!-- Window Controls -->
   <div class="window-controls">
     <button onclick="minimizePage()">−</button>
@@ -53,25 +125,25 @@
   </div>
 
   <!-- Page 1: Start Page -->
-  <div id="start-page">
+  <div id="start-page" class="fade fade-in">
     <h1>Series Recommendations!</h1>
     <button onclick="openMenu()">Open Menu</button>
   </div>
 
- <!-- Page 2: Menu -->
-<div id="menu-page" class="hidden">
-  <h2>Series:</h2>
-  <div class="button-row">
-    <button onclick="animeSection()">Anime Section</button>
-    <button onclick="msaSection()">MSA Section</button>
+  <!-- Page 2: Menu -->
+  <div id="menu-page" class="hidden fade fade-in">
+    <h2>Series:</h2>
+    <div class="button-row">
+      <button onclick="animeSection()">Anime Section</button>
+      <button onclick="msaSection()">MSA Section</button>
+      <button onclick="kdramaSection()">KDrama Section</button>
+    </div>
+    <button onclick="returnToHome()">Return to Home</button>
   </div>
-  <button onclick="returnToHome()">Return</button>
-</div>
 
-  <!-- Page 3: Recommendations -->
-  <div id="recommendations-page" class="hidden">
-    <h2>Romance Anime Recommendations</h2>
-      <p>Content for the Anime section goes here!</p>
+  <!-- Page 3: Anime Section -->
+  <div id="anime-page" class="hidden fade fade-in">
+    <h2>Anime Recommendations</h2>
     <ul>
       <li><input type="checkbox" id="fruits-basket"><label for="fruits-basket">Fruits Basket</label></li>
       <li><input type="checkbox" id="your-lie-in-april"><label for="your-lie-in-april">Your Lie in April</label></li>
@@ -81,26 +153,42 @@
       <li><input type="checkbox" id="wotokaoi"><label for="wotokaoi">Wotokaoi</label></li>
       <li><input type="checkbox" id="Horimiya"><label for="Horimiya">Horimiya</label></li>
     </ul>
-    <button onclick="returnToMenu()">Return</button>
+    <button onclick="returnToMenu()">Return to Menu</button>
   </div>
 
   <!-- Page 4: MSA Section -->
-  <div id="msa-page" class="hidden">
-    <h2>MSA Section</h2>
-    <p>Content for the MSA section goes here!</p>
-      <ul>
-      <li><input type="checkbox" id="Movie-the-con-sisters-going-to-bora-bora"><label for="Movie-the-con-sisters-going-to-bora-bora">MOVIE:The Con Sisters-Going To Bora Bora</label></li>
+  <div id="msa-page" class="hidden fade fade-in">
+    <h2>MSA Recommendations</h2>
+    <ul>
+      <li><input type="checkbox" id="Movie-the-con-sisters-going-to-bora-bora"><label for="Movie-the-con-sisters-going-to-bora-bora">MOVIE: The Con Sisters-Going To Bora Bora</label></li>
       <li><input type="checkbox" id="im-turning-into-a-vampire"><label for="im-turning-into-a-vampire">I'm Turning into a Vampire</label></li>
       <li><input type="checkbox" id="my-life-as-an-artist"><label for="my-life-as-an-artist">My Life As An Artist</label></li>
       <li><input type="checkbox" id="no-one-knows-im-a-famous-actor"><label for="no-one-knows-im-a-famous-actor">No One Knows I'm A Famous Actor</label></li>
-      <li><input type="checkbox" id="how-to-earn-10-millions-in-10-days"><label for="how-to-earn-10-millions-in-10-days">How To Earn 10 Millions IN 10 Days</label></li>
+      <li><input type="checkbox" id="how-to-earn-10-millions-in-10-days"><label for="how-to-earn-10-millions-in-10-days">How To Earn 10 Million In 10 Days</label></li>
       <li><input type="checkbox" id="how-i-met-my-father"><label for="How-i-met-my-father">How I Met My Father</label></li>
       <li><input type="checkbox" id="how-a-real-life-princess-goes-to-school"><label for="how-a-real-life-princess-goes-to-school">How A Real Life Princess Goes To School</label></li>
     </ul>
-    <button onclick="returnToMenu()">Return</button>
+    <button onclick="returnToMenu()">Return to Menu</button>
+  </div>
+
+  <!-- Page 5: KDrama Section -->
+  <div id="kdrama-page" class="hidden fade fade-in">
+    <h2>KDrama Recommendations</h2>
+    <ul>
+      <li><input type="checkbox" id="the-sound-of-magic"><label for="the-sound-of-magic">The Sound Of Magic</label></li>
+      <li><input type="checkbox" id="law-class"><label for="law-class">Law Class</label></li>
+      <li><input type="checkbox" id="True-beauty"><label for="True-beauty">True Beauty</label></li>
+      <li><input type="checkbox" id="twinkling-watermelon"><label for="twinkling-watermelon">Twinkling Watermelon</label></li>
+      <li><input type="checkbox" id="Boys-over-flowers"><label for="Boys-over-flowers">Boys Over Flowers</label></li>
+      <li><input type="checkbox" id="my-name"><label for="my-name">My Name</label></li>
+      <li><input type="checkbox" id="20th-century-girl"><label for="20th-century-girl">20th Century Girl</label></li>
+      <li><input type="checkbox" id="its-okay-to-not-be-okay"><label for="its-okay-to-not-be-okay">It's Okay To Not Be Okay</label></li>
+      <li><input type="checkbox" id="Hi-bye-mama"><label for="hi-bye-mama">Hi Bye Mama</label></li>
+      <li><input type="checkbox" id="alchemy-of-souls"><label for="alchemy-of-souls">Alchemy Of Souls</label></li>
+    </ul>
+    <button onclick="returnToMenu()">Return to Menu</button>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
-

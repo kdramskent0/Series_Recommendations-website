@@ -16,35 +16,52 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Function to open the Menu Page (Page 2)
+// Function to fade out the current page and show the new page
+function fadeOutAndShowPage(hidePageId, showPageId) {
+  const hidePage = document.getElementById(hidePageId);
+  const showPage = document.getElementById(showPageId);
+
+  // Apply fade-out effect on the current page
+  hidePage.classList.add('fade-out');
+  
+  // Wait for the fade-out effect to finish (500ms, match the transition duration)
+  setTimeout(function() {
+    // Hide the current page and show the next page
+    hidePage.classList.add('hidden');
+    hidePage.classList.remove('fade-out');
+
+    showPage.classList.remove('hidden');
+    
+    // Apply fade-in effect on the new page
+    showPage.classList.add('fade-in');
+  }, 500); // Match this time with the CSS transition time (0.5s)
+}
+
+// Navigation functions with fade effects
 function openMenu() {
-  document.getElementById('start-page').classList.add('hidden');
-  document.getElementById('menu-page').classList.remove('hidden');
+  fadeOutAndShowPage('start-page', 'menu-page');
 }
 
-// Navigates to the Anime Section (Recommendations Page)
 function animeSection() {
-  document.getElementById('menu-page').classList.add('hidden');
-  document.getElementById('recommendations-page').classList.remove('hidden');
+  fadeOutAndShowPage('menu-page', 'anime-page');
 }
 
-// Navigates to the MSA Section
 function msaSection() {
-  document.getElementById('menu-page').classList.add('hidden');
-  document.getElementById('msa-page').classList.remove('hidden');
+  fadeOutAndShowPage('menu-page', 'msa-page');
 }
 
-// Function to return to the home page
+function kdramaSection() {
+  fadeOutAndShowPage('menu-page', 'kdrama-page');
+}
+
 function returnToHome() {
-  document.getElementById('menu-page').classList.add('hidden');
-  document.getElementById('start-page').classList.remove('hidden');
+  fadeOutAndShowPage('menu-page', 'start-page');
 }
 
-// Function to return to the menu page from recommendations or MSA
 function returnToMenu() {
-  document.getElementById('recommendations-page').classList.add('hidden');
-  document.getElementById('msa-page').classList.add('hidden');
-  document.getElementById('menu-page').classList.remove('hidden');
+  fadeOutAndShowPage('anime-page', 'menu-page');
+  fadeOutAndShowPage('msa-page', 'menu-page');
+  fadeOutAndShowPage('kdrama-page', 'menu-page');
 }
 
 // Close and minimize functions
