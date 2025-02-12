@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime Recommendations</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Press Start 2P', cursive;
+      background-image: url('https://i.pinimg.com/736x/58/da/5e/58da5eaad92648867aec655b2572a6c7.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+    h1, h2, button, ul {
+      font-family: 'Press Start 2P', cursive;
+    }
+    .window-controls {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 10px;
+    }
+    .window-controls button {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-family: 'Press Start 2P', cursive;
+      color: white;
+    }
+    .window-controls button:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <!-- Window Controls -->
+  <div class="window-controls">
+    <button onclick="minimizePage()">−</button>
+    <button onclick="closePage()">×</button>
+  </div>
+
+  <!-- Page 1: Start Page -->
+  <div id="start-page">
+    <h1>Series Recommendations!</h1>
+    <button onclick="openMenu()">Open Menu</button>
+  </div>
+
+ <!-- Page 2: Menu -->
+<div id="menu-page" class="hidden">
+  <h2>Series:</h2>
+  <div class="button-row">
+    <button onclick="animeSection()">Anime Section</button>
+    <button onclick="msaSection()">MSA Section</button>
+  </div>
+  <button onclick="returnToHome()">Return</button>
+</div>
+
+  <!-- Page 3: Recommendations -->
+  <div id="recommendations-page" class="hidden">
+    <h2>Romance Anime Recommendations</h2>
+      <p>Content for the Anime section goes here!</p>
+    <ul>
+      <li><input type="checkbox" id="fruits-basket"><label for="fruits-basket">Fruits Basket</label></li>
+      <li><input type="checkbox" id="your-lie-in-april"><label for="your-lie-in-april">Your Lie in April</label></li>
+      <li><input type="checkbox" id="toradora"><label for="toradora">Toradora!</label></li>
+      <li><input type="checkbox" id="orange"><label for="orange">Orange</label></li>
+      <li><input type="checkbox" id="blue-spring-ride"><label for="blue-spring-ride">Blue Spring Ride</label></li>
+      <li><input type="checkbox" id="wotokaoi"><label for="wotokaoi">Wotokaoi</label></li>
+      <li><input type="checkbox" id="Horimiya"><label for="Horimiya">Horimiya</label></li>
+    </ul>
+    <button onclick="returnToMenu()">Return</button>
+  </div>
+
+  <!-- Page 4: MSA Section -->
+  <div id="msa-page" class="hidden">
+    <h2>MSA Section</h2>
+    <p>Content for the MSA section goes here!</p>
+      <ul>
+      <li><input type="checkbox" id="Movie-the-con-sisters-going-to-bora-bora"><label for="Movie-the-con-sisters-going-to-bora-bora">MOVIE:The Con Sisters-Going To Bora Bora</label></li>
+      <li><input type="checkbox" id="im-turning-into-a-vampire"><label for="im-turning-into-a-vampire">I'm Turning into a Vampire</label></li>
+      <li><input type="checkbox" id="my-life-as-an-artist"><label for="my-life-as-an-artist">My Life As An Artist</label></li>
+      <li><input type="checkbox" id="no-one-knows-im-a-famous-actor"><label for="no-one-knows-im-a-famous-actor">No One Knows I'm A Famous Actor</label></li>
+      <li><input type="checkbox" id="how-to-earn-10-millions-in-10-days"><label for="how-to-earn-10-millions-in-10-days">How To Earn 10 Millions IN 10 Days</label></li>
+      <li><input type="checkbox" id="how-i-met-my-father"><label for="How-i-met-my-father">How I Met My Father</label></li>
+      <li><input type="checkbox" id="how-a-real-life-princess-goes-to-school"><label for="how-a-real-life-princess-goes-to-school">How A Real Life Princess Goes To School</label></li>
+    </ul>
+    <button onclick="returnToMenu()">Return</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
